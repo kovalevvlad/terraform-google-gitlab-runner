@@ -110,7 +110,7 @@ docker-machine create --driver google \
     --google-use-internal-ip \
     ${var.gcp_resource_prefix}-test-machine
 
-docker-machine rm -y ${var.gcp_resource_prefix}-test-machine
+docker-machine -D rm -f ${var.gcp_resource_prefix}-test-machine
 
 echo "Setting GitLab concurrency"
 sed -i "s/concurrent = .*/concurrent = ${var.ci_concurrency}/" /etc/gitlab-runner/config.toml
