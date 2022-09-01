@@ -107,7 +107,6 @@ docker-machine create --driver google \
     --google-disk-size ${var.ci_worker_disk_size} \
     --google-machine-image ubuntu-os-cloud/global/images/ubuntu-2004-focal-v20220419 \
     --google-tags ${var.ci_worker_instance_tags} \
-    --google-use-internal-ip \
     ${var.gcp_resource_prefix}-test-machine
 
 docker-machine -D rm -f ${var.gcp_resource_prefix}-test-machine
@@ -137,7 +136,6 @@ sudo gitlab-runner register -n \
     --machine-machine-options "google-disk-type=pd-ssd" \
     --machine-machine-options "google-disk-size=${var.ci_worker_disk_size}" \
     --machine-machine-options "google-tags=${var.ci_worker_instance_tags}" \
-    --machine-machine-options "google-use-internal-ip" \
     && true
 
 echo "GitLab CI Runner installation complete"
